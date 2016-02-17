@@ -2,7 +2,14 @@
 " Language: C++
 " License: GPL
 
-"
+if !exists('g:qt_syntax_enable')
+    let g:qt_syntax_enable = 0
+endif
+
+if !exists('g:ndk_syntax_enable')
+    let g:ndk_syntax_enable = 0
+endif
+
 if 1==g:qt_syntax_enable "{{{
     "
     " -- Qt classes
