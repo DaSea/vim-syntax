@@ -10,6 +10,10 @@ if !exists('g:ndk_syntax_enable')
     let g:ndk_syntax_enable = 0
 endif
 
+if !exists('g:doxygen_syntax_enable')
+    let g:doxygen_syntax_enable = 0
+endif
+
 if 1==g:qt_syntax_enable "{{{
     "
     " -- Qt classes
@@ -95,7 +99,7 @@ if 1==g:qt_syntax_enable "{{{
     syn keyword qClass QDeepCopy QHttpRequestHeader QPaintEvent QStyleOption QXmlParseException
     syn keyword qClass QDesktopWidget QHttpResponseHeader QPair QStylePlugin QXmlReader
     syn keyword qClass QDial QIconDrag QPalette QStyleSheet QXmlSimpleReader
-    syn keyword qClass QDialog QIconDragItem QPen QStyleSheetItem QXtWidget 
+    syn keyword qClass QDialog QIconDragItem QPen QStyleSheetItem QXtWidget
 
     " --- Qt keywords
     "
@@ -115,7 +119,7 @@ if 1==g:ndk_syntax_enable
 
     " ===NDK keywords
     syn keyword cType jint jdouble jboolean jbyte jchar jshort jlong jfloat jsize
-    syn keyword cType jobject jclass jstring jarray jweak jthrowable 
+    syn keyword cType jobject jclass jstring jarray jweak jthrowable
     syn keyword cType jintArray jdoubleArray jshortArray jlongArray jbyteArray
     syn keyword cType jcharArray jfloatArray jobjectArray jbooleanArray
     syn keyword cType jmethodID jfieldID
@@ -124,3 +128,29 @@ if 1==g:ndk_syntax_enable
     highlight link nClass Type
 endif
 
+if 1==g:doxygen_syntax_enable
+    
+    syn match doxygenCommand +[\@]\(a\|addindex\|addtogroup\|anchor\|arg\)\>+
+    syn match doxygenCommand +[\@]\(attention\|author\|b\|brief\|bug\|c\|class\)\>+
+    syn match doxygenCommand +[\@]\(code\|copydoc\|date\|def\|defgroup\)\>+
+    syn match doxygenCommand +[\@]\(deprecated\|dontinclude\|dotfile\|e\|else\)\>+
+    syn match doxygenCommand +[\@]\(elseif\|em\|endcode\|endhtmlonly\|endif\)\>+
+    syn match doxygenCommand +[\@]\(endlatexonly\|endlink\|endverbatim\|enum\)\>+
+    syn match doxygenCommand +[\@]\(example\|exception\|f$\|f[\|f]\|file\|fn\)\>+
+    syn match doxygenCommand +[\@]\(hideinitializer\|htmlinclude\|htmlonly\|if\)\>+
+    syn match doxygenCommand +[\@]\(ifnot\|image\|include\|ingroup\|internal\)\>+
+    syn match doxygenCommand +[\@]\(invariant\|interface\|latexonly\|li\|line\)\>+
+    syn match doxygenCommand +[\@]\(link\|mainpage\|n\|name\|namespace\)\>+
+    syn match doxygenCommand +[\@]\(nosubgrouping\|note\|overload\|p\|package\)\>+
+    syn match doxygenCommand +[\@]\(page\|par\|param\|post\|pre\|ref\|relates\)\>+
+    syn match doxygenCommand +[\@]\(remarks\|returns\?\|retval\|sa\|see\)\>+
+    syn match doxygenCommand +[\@]\(section\|showinitializer\|since\|skip\)\>+
+    syn match doxygenCommand +[\@]\(skipline\|struct\|subsection\|subsubsection\)\>+
+    syn match doxygenCommand +[\@]\(test\|throw\|todo\|typedef\|union\|until\)\>+
+    syn match doxygenCommand +[\@]\(var\|verbatim\|verbinclude\|version\)\>+
+    syn match doxygenCommand +[\@]\(warning\|weakgroup\)\>+
+    syn match doxygenCommand +[\@][$@\&~<>#]\>+
+
+    syn cluster	cCommentGroup	add=doxygenCommand
+    hi link doxygenCommand		Type
+endif
