@@ -15,7 +15,7 @@
 "   0.1 - initial upload, modification from vimscript#1201, Extended c.vim
 
 
-" Common ANSI-standard functions
+" Common ANSI-standard functions {{{
 syn keyword cAnsiFunction	MULU_ DIVU_ MODU_ MUL_ DIV_ MOD_
 syn keyword cAnsiFunction	main typeof
 syn keyword cAnsiFunction	open close read write lseek dup dup2
@@ -183,8 +183,9 @@ syn keyword cAnsiFunction	cacosf cacos assert
 syn keyword cAnsiFunction	UINTMAX_C INTMAX_C UINT64_C
 syn keyword cAnsiFunction	UINT32_C UINT16_C UINT8_C
 syn keyword cAnsiFunction	INT64_C INT32_C INT16_C INT8_C
+" }}}
 
-" Common ANSI-standard Names
+" Common ANSI-standard Names {{{
 syn keyword	cAnsiName	PRId8 PRIi16 PRIo32 PRIu64
 syn keyword	cAnsiName	PRId16 PRIi32 PRIo64 PRIuLEAST8
 syn keyword	cAnsiName	PRId32 PRIi64 PRIoLEAST8 PRIuLEAST16
@@ -238,8 +239,9 @@ syn keyword	cAnsiName	bitand not or_eq
 
 hi def link cAnsiFunction cFunction
 hi def link cAnsiName cIdentifier
+" }}}
 
-" Operators
+" Operators {{{
 syn match cOperator	"\(<<\|>>\|[-+*/%&^|<>!=]\)="
 syn match cOperator	"<<\|>>\|&&\|||\|++\|--\|->"
 syn match cOperator	"[.!~*&%<>^|=,+-]"
@@ -276,4 +278,4 @@ hi def link cDelimiter Delimiter
 " foldmethod=syntax fix, courtesy of Ivan Freitas
 hi def link cBraces Delimiter
 hi def link cBoolean Boolean
-
+" }}}

@@ -2,19 +2,27 @@
 " Language: C++
 " License: GPL
 
-if !exists('g:qt_syntax_enable')
-    let g:qt_syntax_enable = 0
+if !exists('g:ds_qt_syntax_enable')
+    let g:ds_qt_syntax_enable = 0
 endif
 
-if !exists('g:ndk_syntax_enable')
-    let g:ndk_syntax_enable = 0
+if !exists('g:ds_ndk_syntax_enable')
+    let g:ds_ndk_syntax_enable = 0
 endif
 
-if !exists('g:doxygen_syntax_enable')
-    let g:doxygen_syntax_enable = 0
+if !exists('g:ds_doxygen_syntax_enable')
+    let g:ds_doxygen_syntax_enable = 0
 endif
 
-if 1==g:qt_syntax_enable "{{{
+if !exists('g:ds_opengl_syntax_enable')
+    let g:ds_opengl_syntax_enable = 0
+endif
+
+if !exists('g:ds_other_syntax_enable')
+    let g:ds_other_syntax_enable = 1
+endif
+
+if 1==g:ds_qt_syntax_enable "{{{
     "
     " -- Qt classes
     "
@@ -113,7 +121,7 @@ if 1==g:qt_syntax_enable "{{{
     highlight link qClass Type
 endif "}}}
 
-if 1==g:ndk_syntax_enable
+if 1==g:ds_ndk_syntax_enable "{{{
     " == NDK class
     syn keyword nClass JNIEnv JavaVM
 
@@ -126,10 +134,9 @@ if 1==g:ndk_syntax_enable
 
     " highlight
     highlight link nClass Type
-endif
+endif "}}}
 
-if 1==g:doxygen_syntax_enable
-    
+if 1==g:ds_doxygen_syntax_enable "{{{
     syn match doxygenCommand +[\@]\(a\|addindex\|addtogroup\|anchor\|arg\)\>+
     syn match doxygenCommand +[\@]\(attention\|author\|b\|brief\|bug\|c\|class\)\>+
     syn match doxygenCommand +[\@]\(code\|copydoc\|date\|def\|defgroup\)\>+
@@ -151,6 +158,61 @@ if 1==g:doxygen_syntax_enable
     syn match doxygenCommand +[\@]\(warning\|weakgroup\)\>+
     syn match doxygenCommand +[\@][$@\&~<>#]\>+
 
-    syn cluster	cCommentGroup	add=doxygenCommand
-    hi link doxygenCommand		Type
-endif
+    syn cluster cCommentGroup add=doxygenCommand
+    hi link doxygenCommand Type
+endif "}}}
+
+if 1==g:ds_opengl_syntax_enable " {{{
+" Data types {{{
+syntax keyword glConstant GL_BYTE GL_UNSIGNED_BYTE GL_SHORT GL_UNSIGNED_SHORT GL_INT
+syntax keyword glConstant GL_UNSIGNED_INT GL_FLOAT GL_DOUBLE GL_2_BYTES GL_3_BYTES GL_4_BYTES
+
+syntax keyword glType GLenum GLboolean GLbitfield GLvoid GLchar GLbyte GLshort
+syntax keyword glType GLint GLubyte GLushort GLuint GLsizei GLintptr
+syntax keyword glType GLsizeiptr GLfloat GLclampf GLdouble GLclampd
+" }}}
+
+" Constants {{{
+syntax keyword glConstant GL_FALSE GL_TRUE
+syntax keyword glConstant GL_TRUE
+
+syntax keyword glConstant GL_POINTS GL_LINES GL_LINE_LOOP GL_LINE_STRIP GL_TRIANGLES
+syntax keyword glConstant GL_TRIANGLE_STRIP GL_TRIANGLE_FAN GL_QUADS GL_QUAD_STRIP GL_POLYGON
+" }}}
+
+" Function{{{
+syntax keyword glFunction glCreateProgram
+syntax keyword glFunction glCreateShader
+syntax keyword glFunction glUniform1i
+syntax keyword glFunction glUniform2i
+syntax keyword glFunction glUniform3i
+syntax keyword glFunction glUniform4i
+syntax keyword glFunction glUniform1f
+syntax keyword glFunction glUniform2f
+syntax keyword glFunction glUniform3f
+syntax keyword glFunction glUniform4f
+syntax keyword glFunction glUniform1iv
+syntax keyword glFunction glUniform2iv
+syntax keyword glFunction glUniform3iv
+syntax keyword glFunction glUniform4iv
+syntax keyword glFunction glUniform1fv
+syntax keyword glFunction glUniform2fv
+syntax keyword glFunction glUniform3fv
+syntax keyword glFunction glUniform4fv
+syntax keyword glFunction glUniformMatrix2fv
+syntax keyword glFunction glUniformMatrix3fv
+syntax keyword glFunction glUniformMatrix4fv
+syntax keyword glFunction glUseProgram
+" }}}
+hi link glType                Type
+hi link glFunction            Function
+hi link glConstant            Constant
+endif " }}}
+
+if 1==g:ds_other_syntax_enable " 主要记录一些杂项{{{
+    " kqtype
+    syn keyword kqType CKqString BOOL
+
+    " highlight
+    highlight link kqType Type
+endif "}}}
