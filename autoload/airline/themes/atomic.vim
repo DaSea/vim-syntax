@@ -45,29 +45,6 @@ function! airline#themes#atomic#refresh()
 	" Accent color
 	" It helps to remove the bold typography into modes section
 	let g:airline#themes#atomic#palette.accents = {'black' : airline#themes#get_highlight2(['LineNr', 'bg'], ['ModeMsg', 'fg'], 'none')}
-
-	" Mode map
-	let g:airline_mode_map = {
-		\ '__' : '--',
-		\ 'n'  : 'N',
-		\ 'i'  : 'I',
-		\ 'R'  : 'R',
-		\ 'c'  : 'C',
-		\ 'v'  : 'V',
-		\ 'V'  : 'V-L',
-		\ '' : 'V-B',
-		\ 's'  : 'S',
-		\ 'S'  : 'S-L',
-		\ '' : 'S-B',
-		\ 't'  : 'T',
-		\ }
-
-	" Settings
-	let g:airline_symbols.paste = 'Ξ'
-	let g:airline_symbols.spell = 'S'
-	let g:airline_section_z = airline#section#create(['--%1p%%-- ',
-		\ '%#__accent_bold#%l%#__restore__#', ':%c'])
-
 endfunction
 
 call airline#themes#atomic#refresh()

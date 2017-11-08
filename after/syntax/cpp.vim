@@ -211,7 +211,9 @@ endif " }}}
 
 if 1==g:ds_other_syntax_enable " 主要记录一些杂项{{{
     " kqtype
-    syn keyword kqType CKqString BOOL
+    syn keyword kqType CKQString BOOL KqBool KqChar KqByte KqUchar
+    syn keyword kqType KqWchar KqUint KqInt KqShort KqUshort KqLong
+    syn keyword kqType KqFloat KqDouble KOString
 
     " highlight
     highlight link kqType Type
