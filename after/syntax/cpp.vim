@@ -23,10 +23,7 @@ if !exists('g:ds_other_syntax_enable')
 endif
 
 if 1==g:ds_qt_syntax_enable "{{{
-    "
     " -- Qt classes
-    "
-    "
     syn keyword qClass QAccel QDict QIconFactory QPicture QSyntaxHighlighter
     syn keyword qClass QAccessible QDictIterator QIconSet QPixmap Qt
     syn keyword qClass QAccessibleInterface QDir QIconView QPixmapCache QTab
@@ -50,7 +47,7 @@ if 1==g:ds_qt_syntax_enable "{{{
     syn keyword qClass QBig5hkscsCodec QDomNodeList QJisCodec QPushButton QThread
     syn keyword qClass QBitArray QDomNotation QKbdDriverFactory QRadioButton QTime
     syn keyword qClass QBitmap QDomProcessingInstruction QKbdDriverPlugin QRangeControl QTimeEdit
-    syn keyword qClass QBitVal QDomText QKeyEvent QRect QTimer
+    syn keyword qClass QBitVal QDomText QKeyEvent QRect QRectF QTimer
     syn keyword qClass QBoxLayout QDoubleValidator QKeySequence QRegExp QTimerEvent
     syn keyword qClass QBrush QDragEnterEvent QLabel QRegExpValidator QToolBar
     syn keyword qClass QBuffer QDragLeaveEvent QLayout QRegion QToolButton
@@ -73,9 +70,9 @@ if 1==g:ds_qt_syntax_enable "{{{
     syn keyword qClass QCanvasSprite QFont QMapConstIterator QSjisCodec QVBox
     syn keyword qClass QCanvasText QFontDatabase QMapIterator QSlider QVBoxLayout
     syn keyword qClass QCanvasView QFontDialog QMemArray QSocket QVButtonGroup
-    syn keyword qClass QCDEStyle QFontInfo QMenuBar QSocketDevice QVGroupBox
+    syn keyword qClass QCDEStyle QFontInfo QMenu QMenuBar QSocketDevice QVGroupBox
     syn keyword qClass QChar QFontManager QMenuData QSocketNotifier QWaitCondition
-    syn keyword qClass QCharRef QFontMetrics QMessageBox QSound QWhatsThis
+    syn keyword qClass QCharRef QFontMetrics QFontMetricsF QMessageBox QSound QWhatsThis
     syn keyword qClass QCheckBox QFrame QMetaObject QSpacerItem QWheelEvent
     syn keyword qClass QCheckListItem QFtp QMetaProperty QSpinBox QWidget
     syn keyword qClass QCheckTableItem QGb18030Codec QMimeSource QSplitter QWidgetFactory
@@ -103,12 +100,13 @@ if 1==g:ds_qt_syntax_enable "{{{
     syn keyword qClass QDate QHideEvent QObjectList QStrList QXmlInputSource
     syn keyword qClass QDateEdit QHostAddress QPaintDevice QStrListIterator QXmlLexicalHandler
     syn keyword qClass QDateTime QHttp QPaintDeviceMetrics QStyle QXmlLocator
-    syn keyword qClass QDateTimeEdit QHttpHeader QPainter QStyleFactory QXmlNamespaceSupport
+    syn keyword qClass QDateTimeEdit QHttpHeader QPainter QPainterPath QStyleFactory QXmlNamespaceSupport
     syn keyword qClass QDeepCopy QHttpRequestHeader QPaintEvent QStyleOption QXmlParseException
     syn keyword qClass QDesktopWidget QHttpResponseHeader QPair QStylePlugin QXmlReader
     syn keyword qClass QDial QIconDrag QPalette QStyleSheet QXmlSimpleReader
-    syn keyword qClass QDialog QIconDragItem QPen QStyleSheetItem QXtWidget
+    syn keyword qClass QDialog QIconDragItem QPen QStyleSheetItem QXtWidget QIcon
 
+    syn keyword qClass QVector QRegularExpression QTextCharFormat QDockWidget
     " --- Qt keywords
     "
     syn keyword     cType           SIGNAL SLOT
@@ -211,9 +209,14 @@ endif " }}}
 
 if 1==g:ds_other_syntax_enable " 主要记录一些杂项{{{
     " kqtype
-    syn keyword kqType CKQString BOOL KqBool KqChar KqByte KqUchar
-    syn keyword kqType KqWchar KqUint KqInt KqShort KqUshort KqLong
-    syn keyword kqType KqFloat KqDouble KOString
+    syn keyword kqType KQWString KQBool KQInt8 KQUInt8 KQFloat KQDouble KQInt32 KQUInt32 KQInt16 KQUInt16 KQUInt64 KQInt64
+    syn keyword kqType CKQString BOOL KqBool KqChar KqByte KqUChar KqWChar KqAChar KOGraphics KOSize KOLayer
+    syn keyword kqType KqInt32 KqUInt32 KqShort KqUShort KqInt64 KqUInt64 KOPoint KORect KOMap KOFeatureLayer
+    syn keyword kqType KqFloat KqDouble KOString KqTChar KORefPtr KOFeature KOGeometry KOMapView KOAnnotationLayer
+    syn keyword kqType KOLayerEditBuffer KOFeatureEditBuffer KOAnnotation KOTextElement KOStyleLabel KOLabelProperty
+    syn keyword kqType KODisplayTransform KOGeoPoint KOGeoPolyline KOGeoPolygon KOLabelEngine KOLabelBuilder KOLabelPlaceUtil
+    syn keyword kqType KOGeometryProject KOEditor KOFont KOPen KOBrush
+    syn keyword kqType KQJsonDocument KQJsonObject KQJsonArray KQJsonValue KQJsonParseError
 
     " highlight
     highlight link kqType Type
